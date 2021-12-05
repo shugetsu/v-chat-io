@@ -34,7 +34,7 @@ jobs:
 
       # Install dependencies and build projects
       - name: Install and Build
-        run: yarn && run build
+        run: yarn && yarn build
 
       # Login against a Docker registry except on PR
       # https://github.com/docker/login-action
