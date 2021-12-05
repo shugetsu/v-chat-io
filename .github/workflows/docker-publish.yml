@@ -1,13 +1,6 @@
 name: CI to Docker Hub
 
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
 on:
-  schedule:
-    - cron: '45 15 * * *'
   push:
     # Publish semver tags as releases.
     tags: [ 'v*.*.*' ]
@@ -15,7 +8,6 @@ on:
 env:
   # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
-
 
 jobs:
   build:
@@ -31,7 +23,7 @@ jobs:
         uses: actions/checkout@v2
 
       # Install dependencies and build projects
-      - name: Install and Build
+      - name: Install and build project
         run: yarn && yarn build
 
       # Login against a Docker registry except on PR
