@@ -4,4 +4,4 @@ ADD . /home/app
 
 WORKDIR /home/app
 
-CMD ["node", "start:prod"]
+CMD ["node", "dist/main"]
