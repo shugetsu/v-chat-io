@@ -13,8 +13,6 @@ on:
     tags: [ 'v*.*.*' ]
 
 env:
-  # Use docker.io for Docker Hub if empty
-  REGISTRY: shugetsu
   # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
 
@@ -38,10 +36,10 @@ jobs:
 
       # Login against a Docker registry except on PR
       # https://github.com/docker/login-action
-      - name: Log into registry ${{ env.REGISTRY }}
+      - name: Login to Docker Hub
         uses: docker/login-action@v1
         with:
-          registry: ${{ env.REGISTRY }}
+
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
 
@@ -55,7 +53,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v1
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          images: ${{ env.IMAGE_NAME }}
 
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
