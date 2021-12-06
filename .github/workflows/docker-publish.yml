@@ -3,7 +3,7 @@ name: CI to Docker Hub
 on:
   push:
     # Publish semver tags as releases.
-    tags: [ 'v*.*.*' ]
+    tags: ['v*.*.*']
 
 env:
   # github.repository as <account>/<repo>
@@ -11,7 +11,6 @@ env:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     permissions:
@@ -21,6 +20,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+
+      # Install dependencies and build projects
+      - name: Install and build project
+        run: yarn && yarn build
 
       # Login against a Docker registry except on PR
       # https://github.com/docker/login-action
