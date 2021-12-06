@@ -1,7 +1,7 @@
 FROM node:latest
 
-ADD . /home/app
+ADD ./dist /home/app
 
 WORKDIR /home/app
 
-CMD ["node", "dist/main"]
+CMD ["node", "main"]
