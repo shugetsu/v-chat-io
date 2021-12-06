@@ -4,4 +4,4 @@ ADD . /home/app
 
 WORKDIR /home/app
 
-CMD ["npm", "run", "start:prod"]
+CMD ["node", "dist/main"]
