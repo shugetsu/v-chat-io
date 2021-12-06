@@ -1,6 +1,8 @@
 FROM node:latest
 
-ADD ./dist /home/app
+RUN yarn && yarn build
+
+COPY dist /home/app
 
 WORKDIR /home/app
 
