@@ -2,7 +2,7 @@ FROM node:latest
 
 RUN yarn && yarn build
 
-COPY dist /home/app
+COPY ./dist /home/app
 
 WORKDIR /home/app
 
