@@ -2,8 +2,8 @@ FROM node:latest
 
 RUN yarn && yarn build
 
-ADD . /home/app
+ADD ./dist /home/app
 
 WORKDIR /home/app
 
-CMD ["start:prod"]
+CMD ["node", "main"]
